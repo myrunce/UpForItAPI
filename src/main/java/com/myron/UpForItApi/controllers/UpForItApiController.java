@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -86,19 +87,19 @@ public class UpForItApiController {
     	model.addAttribute("challenges", challengeService.allChallenges());
         return "upforitapi.jsp";
     }
-    
+    @CrossOrigin
     @ResponseBody
 	@GetMapping("/challenges")
 	public List<Challenge> allChallenges(){
 		return challengeService.allChallenges();
 	}
-    
+    @CrossOrigin
     @ResponseBody
 	@GetMapping("/challenges/{id}")
 	public Challenge oneChallenge(@PathVariable("id") Long id){
 		return challengeService.findOne(id);
 	}
-	
+    @CrossOrigin
     @ResponseBody
     @GetMapping("/challenges/random")
     public Challenge randomChallenge() {
